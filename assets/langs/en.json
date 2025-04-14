@@ -1,0 +1,28 @@
+{
+    "welcome_title": "We are more than just students",
+    "taleb_plus": "Taleb Plus!",
+    "login": "Login",
+    "signup": "Sign Up",
+    "guest_login": "Login as a guest",
+    "email": "Email",
+    "password": "Password",
+    "create_account": "Create Account",
+    "already_have_account": "Already have an account? Log in",
+    "discount_activated": "Discount Activated!",
+    "success_message": "You have successfully activated your discount!",
+    "search": "Search...",
+    "welcome": "Welcome",
+        "try_first": "Try These First",
+"gym": "Gym",
+"food": "Food",
+"coffee": "Coffee",
+"market": "Market",
+"office": "Office",
+"discount_activated": "Discount Activated!",
+"success_message": "You have successfully activated your discount!",
+"scan_qr": "Scan QR Code",
+"qr_hint": "Point the camera at the QR code",
+"discount_qr_info": "The discount is only for students after scanning the QR code"
+
+  }
+  

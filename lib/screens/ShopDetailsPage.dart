@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'qr_scan_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class ShopDetailsPage extends StatelessWidget {
   final Map shop;
@@ -70,7 +71,7 @@ class ShopDetailsPage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Text(
-                'The discount is only for students after scanning the QR code',
+                'discount_qr_info'.tr(),
                 textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 16),
               ),
@@ -89,8 +90,8 @@ class ShopDetailsPage extends StatelessWidget {
                       showDialog(
                         context: context,
                         builder: (_) => AlertDialog(
-                          title: Text("✅ Scan Complete"),
-                          content: Text("Code: \$result"),
+                          title: Text("✅ " + "discount_activated".tr()),
+                          content: Text("Code: $result"),
                           actions: [
                             TextButton(
                               onPressed: () => Navigator.pop(context),
@@ -103,11 +104,8 @@ class ShopDetailsPage extends StatelessWidget {
                   },
                   icon: Icon(Icons.qr_code),
                   label: Text(
-                    "SCAN QR CODE",
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                    ),
+                    "scan_qr".tr(),
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                   ),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Color(0xFF008C8C),

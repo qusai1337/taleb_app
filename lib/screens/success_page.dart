@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SuccessPage extends StatelessWidget {
   @override
@@ -12,21 +13,29 @@ class SuccessPage extends StatelessWidget {
           children: [
             Icon(Icons.check_circle, size: 160, color: Colors.green),
             SizedBox(height: 24),
+
+            // 🎉 عنوان النجاح
             Text(
-              "DISCOUNT ACTIVATED!",
+              "discount_activated".tr(),
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
                 color: Colors.green,
               ),
             ),
+
             SizedBox(height: 16),
+
+            // ✅ رسالة التفعيل
             Text(
-              "You have Successfully activated\nyour discount!",
+              "success_message".tr(),
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16),
             ),
+
             SizedBox(height: 32),
+
+            // زر Done
             SizedBox(
               width: double.infinity,
               child: ElevatedButton(
@@ -40,7 +49,7 @@ class SuccessPage extends StatelessWidget {
                   ),
                 ),
                 child: Text(
-                  "DONE",
+                  "OK",
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,

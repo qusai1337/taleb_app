@@ -1,0 +1,28 @@
+{
+    "welcome_title": "نحن أكثر من مجرد طلاب",
+    "taleb_plus": "طالب بلس!",
+    "login": "تسجيل الدخول",
+    "signup": "إنشاء حساب",
+    "guest_login": "الدخول كضيف",
+    "email": "البريد الإلكتروني",
+    "password": "كلمة المرور",
+    "create_account": "إنشاء حساب",
+    "already_have_account": "لديك حساب؟ سجل دخولك",
+    "discount_activated": "تم تفعيل الخصم!",
+    "success_message": "تم تفعيل خصمك بنجاح!",
+    "search": "ابحث...",
+    "welcome": "أهلاً",
+    "try_first": "جرب هذه أولاً",
+"gym": "صالات رياضية",
+"food": "طعام",
+"coffee": "قهوة",
+"market": "سوبرماركت",
+"office": "مكاتب",
+"discount_activated": "تم تفعيل الخصم!",
+"success_message": "تم تفعيل خصمك بنجاح!",
+"scan_qr": "امسح رمز QR",
+"qr_hint": "وجّه الكاميرا نحو رمز QR",
+"discount_qr_info": "الخصم متاح فقط للطلاب بعد مسح رمز QR"
+
+  }
+  

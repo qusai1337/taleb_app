@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'login_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignupPage extends StatelessWidget {
   final TextEditingController nameController = TextEditingController();
@@ -36,9 +38,7 @@ class SignupPage extends StatelessWidget {
 
     try {
       final response = await http.post(
-     //   Uri.parse('http://localhost:3000/signup'),
-                Uri.parse('http://192.168.1.10:3000/signup'),
-
+        Uri.parse('http://localhost:3000/signup'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'name': name, 'email': email, 'password': pass}),
       );
@@ -46,20 +46,20 @@ class SignupPage extends StatelessWidget {
       final data = json.decode(response.body);
 
       if (response.statusCode == 201) {
-        showDialog(
-          context: context,
-          builder: (_) => AlertDialog(
-            title: Text("Success"),
-            content: Text("Account created successfully!"),
-            actions: [
-              TextButton(
-                onPressed: () {
-                  Navigator.pop(context); // dialog
-                  Navigator.pop(context); // back to login
-                },
-                child: Text("OK"),
-              )
-            ],
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (_) => LoginPage()),
+          (route) => false,
+        );
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text("Account created successfully. Please log in."),
+            backgroundColor: Color(0xFF008C8C),
+            behavior: SnackBarBehavior.floating,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            margin: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            duration: Duration(seconds: 3),
           ),
         );
       } else if (response.statusCode == 409) {
@@ -76,7 +76,7 @@ class SignupPage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text("Error"),
+        title: Text("signup".tr()),
         content: Text(msg),
         actions: [
           TextButton(
@@ -98,7 +98,7 @@ class SignupPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                Text("Create Account",
+                Text("create_account".tr(),
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
@@ -108,7 +108,7 @@ class SignupPage extends StatelessWidget {
                 TextField(
                   controller: nameController,
                   decoration: InputDecoration(
-                    labelText: 'Full Name',
+                    labelText: 'Full Name', 
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -116,7 +116,7 @@ class SignupPage extends StatelessWidget {
                 TextField(
                   controller: emailController,
                   decoration: InputDecoration(
-                    labelText: 'University Email',
+                    labelText: "email".tr(),
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -125,7 +125,7 @@ class SignupPage extends StatelessWidget {
                   controller: passwordController,
                   obscureText: true,
                   decoration: InputDecoration(
-                    labelText: 'Password',
+                    labelText: "password".tr(),
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -134,7 +134,7 @@ class SignupPage extends StatelessWidget {
                   controller: confirmPasswordController,
                   obscureText: true,
                   decoration: InputDecoration(
-                    labelText: 'Confirm Password',
+                    labelText: "Confirm Password", 
                     border: OutlineInputBorder(),
                   ),
                 ),
@@ -143,12 +143,10 @@ class SignupPage extends StatelessWidget {
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFF008C8C),
-                    ),
+                    style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF008C8C)),
                     onPressed: () => signup(context),
                     child: Text(
-                      'SIGN UP',
+                      'signup'.tr(),
                       style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                     ),
                   ),
@@ -157,7 +155,7 @@ class SignupPage extends StatelessWidget {
                 GestureDetector(
                   onTap: () => Navigator.pop(context),
                   child: Text(
-                    'Already have an account? Log in',
+                    'already_have_account'.tr(),
                     style: TextStyle(color: Color(0xFF008C8C)),
                   ),
                 )

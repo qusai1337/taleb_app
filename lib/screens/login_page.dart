@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'signup_page.dart';
 import 'home_page.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LoginPage extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();
@@ -13,15 +14,13 @@ class LoginPage extends StatelessWidget {
     final password = passwordController.text.trim();
 
     if (email.isEmpty || password.isEmpty) {
-      _showError(context, "Email and password are required");
+      _showError(context, "email".tr() + " & " + "password".tr() + " " + "are required");
       return;
     }
 
     try {
       final response = await http.post(
-      //  Uri.parse('http://localhost:3000/login'),
-        Uri.parse('http://192.168.1.10:3000/login'),
-
+        Uri.parse('http://localhost:3000/login'),
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({'email': email, 'password': password}),
       );
@@ -45,7 +44,7 @@ class LoginPage extends StatelessWidget {
     showDialog(
       context: context,
       builder: (_) => AlertDialog(
-        title: Text("Login Failed"),
+        title: Text("login".tr()),
         content: Text(message),
         actions: [
           TextButton(onPressed: () => Navigator.pop(context), child: Text("OK"))
@@ -64,41 +63,57 @@ class LoginPage extends StatelessWidget {
           child: SingleChildScrollView(
             child: Column(
               children: [
-Align(
-  alignment: Alignment.center, // أو جرب Alignment.centerRight
-  child: Padding(
-    padding: EdgeInsets.only(left: 40), // بتقدر تتحكم بالمسافة من اليمين
-    child: Image.asset('assets/logo.png', height: 120),
-  ),
-),
+                Align(
+                  alignment: Alignment.center,
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 40),
+                    child: Image.asset('assets/logo.png', height: 120),
+                  ),
+                ),
+                SizedBox(height: 30),
 
-     SizedBox(height: 30),
+                // Email
                 TextField(
                   controller: emailController,
-                  decoration: InputDecoration(labelText: 'Email', border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                    labelText: "email".tr(),
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 SizedBox(height: 20),
+
+                // Password
                 TextField(
                   controller: passwordController,
                   obscureText: true,
-                  decoration: InputDecoration(labelText: 'Password', border: OutlineInputBorder()),
+                  decoration: InputDecoration(
+                    labelText: "password".tr(),
+                    border: OutlineInputBorder(),
+                  ),
                 ),
                 SizedBox(height: 30),
+
+                // Login button
                 SizedBox(
                   width: double.infinity,
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(backgroundColor: Color(0xFF008C8C)),
                     onPressed: () => login(context),
-                    child: Text('LOG IN', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    child: Text('login'.tr(), style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 ),
                 SizedBox(height: 15),
+
+                // Sign up text
                 GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (_) => SignupPage()));
                   },
-                  child: Text('SIGN UP', style: TextStyle(color: Color(0xFF008C8C), fontWeight: FontWeight.w600)),
+                  child: Text(
+                    'signup'.tr(),
+                    style: TextStyle(color: Color(0xFF008C8C), fontWeight: FontWeight.w600),
+                  ),
                 ),
               ],
             ),
